@@ -49,30 +49,24 @@ prevNextIcon.forEach(icon => {
 });
 
 function updateClock() {
-    // Create a new Date object
     let currentTime = new Date();
 
-    // Get hours, minutes, and AM/PM
     let hours = currentTime.getHours();
     let minutes = currentTime.getMinutes();
     let seconds = currentTime.getSeconds();
     let ampm = hours >= 12 ? 'PM' : 'AM';
 
-    // Convert hours to 12-hour format
     hours = hours % 12;
-    hours = hours ? hours : 12; // 0 should be displayed as 12
+    hours = hours ? hours : 12;
 
-    // Format minutes and seconds with leading zero if needed
     minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    // Update the content of the HTML elements
     document.getElementById('hour').textContent = hours;
     document.getElementById('min').textContent = minutes;
     document.getElementById('sec').textContent = seconds;
     document.getElementById('am').textContent = ampm;
 }
 
-// Call the function initially and then set it to update every second
 updateClock();
 setInterval(updateClock, 1000);
